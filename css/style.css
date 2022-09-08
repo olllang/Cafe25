@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+/* 자주쓰는 색을 변수로 --변수명 */
+:root {
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
+}
+
+/* 각 태그들의 기본 마진/패딩을 초기값 0으로 하고 박스모델 기준을 보더-박스로 한다. */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;
+}
+
+code,
+pre {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+}
+
+/* ---네브바 메뉴--- */
+.navbar {
+  background-color: var(--primary-color);
+  color: white;
+  height: 70px;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: white;
+  padding: 10px;
+  margin: 0 5px;
+
+}
+
+.navbar .flex {
+  justify-content: space-between;
+}
+
+/* 마우스 올렸을 때 밑줄 */
+.navbar a:hover {
+  border-bottom: 2px solid white;
+}
+
+/* ---쇼케이스 섹션--- */
+.showcase {
+  height: 400px;
+  background-color: var(--primary-color);
+  color: white;
+  /* 안에서 절대좌표 사용기준 */
+  position: relative;
+}
+
+.showcase h1 {
+  font-size: 40px;
+}
+
+.showcase p {
+  margin: 20px 0;
+}
+
+.showcase .grid {
+  overflow: visible;
+  grid-template-columns: 55% auto;
+  gap: 30px;
+}
+
+/* 애니메이션 왼쪽에서 오른쪽으로 */
+.showcase-text {
+  animation: slideInFromLeft 1s ease-in;
+}
+
+.showcase-form {
+  position: relative;
+  top: 60px;
+  height: 350px;
+  width: 400px;
+  padding: 40px;
+  z-index: 100;
+  justify-self: flex-end;
+  animation: slideInFromRight 1s ease-in;
+}
+
+.showcase-form .form-control {
+  margin: 30px 0;
+}
+
+.showcase-form input[type='text'],
+.showcase-form input[type='email'] {
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.showcase-form input:focus {
+  outline: none;
+}
+
+/* 가상클래스 */
+.showcase::before,
+.showcase::after {
+  content: '';
+  position: absolute;
+  height: 100px;
+  bottom: -70px;
+  right: 0;
+  left: 0;
+  background: white;
+  /* 배경 찌그러트리기(대각선으로 살짝 기울게) */
+  transform: skewY(-3deg);
+  /* -webkit-transform: skewY(-3deg);
+  -moz-transform: skewY(-3deg);
+  -ms-transform: skewY(-3deg); */
+}
+
+/* ---Stats 섹션--- */
+.stats {
+  padding-top: 100px;
+  animation: slideInFromBottom 1s ease-in;
+}
+
+.stats-heading {
+  max-width: 500px;
+  margin: auto;
+}
+
+.stats .grid h3 {
+  font-size: 35px;
+}
+
+.stats .grid p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ---cli 섹션--- */
+.cli .grid {
+  /* 3개의 열로 나눔 */
+  grid-template-columns: repeat(3, 1fr);
+  /* 2개의 행으로 나눔 */
+  grid-template-rows: repeat(2, 1fr);
+}
+
+/* *: div, image 등 모두 선택 */
+/* first-child: <div class="container grid"> */
+.cli .grid>*:first-child {
+  /* 1 / span 2: 1부터 2개 */
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+
+/* ---Cloud 섹션--- */
+.cloud .grid {
+  /* grid-template의 비율을 4:3으로 */
+  grid-template-columns: 4fr 3fr;
+}
+
+/* ---Languages 섹션--- */
+/* 화면이 작아지면 화면 아래로 내려가도록 */
+.languages .flex {
+  flex-wrap: wrap;
+}
+
+.languages .card {
+  /* 글자 가운데 정렬 */
+  text-align: center;
+  margin: 18px 10px 40px;
+  /* 움직임 설정 + 시간 */
+  transition: transform 0.2s ease-in;
+}
+
+.languages .card h4 {
+  /* 아이콘과 글자 간 간격 */
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.languages .card:hover {
+  /* 위쪽으로 살짝 올라가도록 */
+  transform: translateY(-15px);
+}
+
+/* ---특징 페이지--- */
+.features-head img,
+.docs-head img {
+  width: 200px;
+  justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+}
+
+.features-main .card>i {
+  margin-right: 20px;
+}
+
+.features-main .grid {
+  padding: 30px;
+}
+
+/* 1번째 카드 = 3칸 */
+.features-main .grid>*:first-child {
+  grid-column: 1 / span 3;
+}
+
+/* 2번째 카드 = 2칸 */
+.features-main .grid>*:nth-child(2) {
+  grid-column: 1 / span 2;
+}
+
+/* 나머지는 1칸씩 */
+
+/* 문서 페이지 */
+.docs-main h3 {
+  margin: 20px 0;
+}
+
+/* 위쪽으로 정렬, grid 안에서 정렬 시 flex 정렬 사용가능 */
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr;
+  align-items: flex-start;
+}
+
+.docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px #ccc solid;
+}
+
+.docs-main a:hover {
+  font-weight: bold;
+}
+
+/* Footer */
+.footer .social a {
+  margin: 0 10px;
+}
+
+.fa-github:hover {
+  color: #000000;
+}
+
+.fa-facebook:hover {
+  color: #1773ea;
+}
+
+.fa-instagram:hover {
+  color: #b32e87;
+}
+
+.fa-twitter:hover {
+  color: #1c9cea;
+}
+
+/* 애니메이션 */
+/* 왼쪽에서 오른쪽으로 */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 오른쪽에서 왼쪽으로 */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 위에서 아래로 */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 아래에서 위로 */
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
